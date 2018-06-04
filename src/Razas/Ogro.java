@@ -5,6 +5,8 @@
  */
 package Razas;
 
+import Edificio.Edificio;
+
 /**
  *
  * @author CARLOS
@@ -12,47 +14,17 @@ package Razas;
 public class Ogro implements Raza{
       CentrodeMando Centro; 
     @Override
-    public void ContructorCentrodeMando(){
+    public void ConstructorCentrodeMando(){
          CentrodeMando centro= new CentrodeMando();
+         centro.nivel=1;
          centro.setVida(800);
            centro.setRecurso1(1000);
          centro.setRecurso2(500);
          centro.setRecurso3(300);
      }
-    @Override
-    public void ConstructorRecolector1(){
-        
+      @Override
+    public Edificio ConstruirEdificacion(String edificio){
+        return null;
     }
-    @Override
-    public void ConstructorRecolector2(){
-        
-    }
-    @Override
-    public void ConstructorRecolector3(){
-        
-    }
-    @Override
-    public void ConstructorVehiculo1(){
-        
-    }
-    @Override
-    public void ConstructorVehiculo2(){
-        
-    }
-    @Override
-    public void ConstructorMilicia1(){
-        
-    }
-    @Override
-    public void ConstructorMilicia2(){
-        
-    }
-    @Override
-    public void ConstructorMiliciaEspecial(){
-        
-    }
-    @Override
-    public void ContructorEntrenamiento(){
-        
-    }
+       
 }

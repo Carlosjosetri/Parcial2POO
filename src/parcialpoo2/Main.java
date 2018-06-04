@@ -13,6 +13,6 @@ public class Main {
      public static void main(String[] args){
         Raza carlos=RazaFactory.getRaza("DRAIOCHT");
        
-       
+         System.out.println(carlos.ConstruirEdificacion("RECURSO1").getVida());
     }
 }

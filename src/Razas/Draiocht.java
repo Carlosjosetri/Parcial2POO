@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Razas;
-
+import Edificio.Edificio;
+import Edificio.EdificioFactory;
 /**
  *
  * @author CARLOS
@@ -12,47 +13,19 @@ package Razas;
 public class Draiocht implements Raza{
      CentrodeMando Centro; 
     @Override
-    public void ContructorCentrodeMando(){
+    public void ConstructorCentrodeMando(){
          CentrodeMando centro= new CentrodeMando();
+         centro.nivel=1;
          centro.setVida(1200);
          centro.setRecurso1(1000);
          centro.setRecurso2(500);
          centro.setRecurso3(300);
      }
     @Override
-    public void ConstructorRecolector1(){
+    public Edificio ConstruirEdificacion(String edificio){
+        return EdificioFactory.getEdificio("DRAIOCHT",edificio);
+            
         
     }
-    @Override
-    public void ConstructorRecolector2(){
-        
-    }
-    @Override
-    public void ConstructorRecolector3(){
-        
-    }
-    @Override
-    public void ConstructorVehiculo1(){
-        
-    }
-    @Override
-    public void ConstructorVehiculo2(){
-        
-    }
-    @Override
-    public void ConstructorMilicia1(){
-        
-    }
-    @Override
-    public void ConstructorMilicia2(){
-        
-    }
-    @Override
-    public void ConstructorMiliciaEspecial(){
-        
-    }
-    @Override
-    public void ContructorEntrenamiento(){
-        
-    }
+  
 }

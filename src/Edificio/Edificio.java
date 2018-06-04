@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Razas;
-import Edificio.Edificio;
+package Edificio;
+
 /**
  *
  * @author CARLOS
  */
-public interface Raza {
-    public void ConstructorCentrodeMando();
-    public Edificio ConstruirEdificacion(String edificio);
-  }
+public class Edificio {
+  
+}

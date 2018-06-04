@@ -14,6 +14,7 @@ public class CentrodeMando {
     private int recurso1;
     private int recurso2;
     private int recurso3;
+    int nivel;
 
     public int getVida() {
         return vida;
