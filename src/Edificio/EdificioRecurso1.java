@@ -11,12 +11,16 @@ package Edificio;
  */
 public class EdificioRecurso1 extends Edificio {
    private int vida;
+   private int construccion;
+   private int trabajo;
+   private int acum;
+   
 
     public EdificioRecurso1(EdificioBuilder builder ) {
         this.vida=builder.vida;
     }
 
-    
+    @Override
     public int getVida() {
         return vida;
     }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Edificio;
+import Factorys.FactoryCENTRO;
 import Factorys.FactoryRecurso1;
 
 
@@ -16,6 +17,8 @@ public class EdificioFactory {
         switch (opcion) {
             case "RECURSO1":
                 return FactoryRecurso1.getEdificio(tipo);
+            case "CENTROMANDO":
+                return FactoryCENTRO.getEdificio(tipo);
      
             
         }

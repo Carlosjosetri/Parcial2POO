@@ -10,8 +10,12 @@ package Edificio;
  * @author CARLOS
  */
 public class Edificio {
+    public void hablar(){
+        
+    }
   public int getVida(){
       return 1;
   }
+  
 }
     
