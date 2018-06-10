@@ -16,6 +16,8 @@ public class Edificio {
   public int getVida(){
       return 1;
   }
-  
+  public String getNombre(){
+      return "hola";
+  }
 }
     

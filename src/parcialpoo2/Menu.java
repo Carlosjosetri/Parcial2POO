@@ -55,6 +55,7 @@ public class Menu {
                 ConstruirEdificacion("CENTROMANDO"));
         fase.players.get(1).edificios.add(fase.players.get(1).getRaza().
                 ConstruirEdificacion("CENTROMANDO"));
+        
         Random o = new Random();
         int n = o.nextInt(2);
         int y;
@@ -122,7 +123,7 @@ return null;
                         menuConstrucion(player);
                         break;
                     case 2:
-                        System.out.println("hsdcsddc");
+                        edificiosDisponibles( player);
                         break;
                     case 3:
                         flag=false;
@@ -153,7 +154,7 @@ return null;
                         player.lag=2;
                         break;
                     case 2:
-                        System.out.println("hsdcsddc");
+                        edificiosDisponibles( player);
                         break;
                     case 3:
                         player.edificios.add(player.getRaza().ConstruirEdificacion("ENTRENAMIENTO"));
@@ -176,6 +177,11 @@ return null;
         }
 
     }
+  public void edificiosDisponibles(Player player){
+      for(int i=0;i<player.edificios.size();i++){
+          System.out.println(player.edificios.get(i).getNombre());
+      }
+  }
 
     public void menuraza() {
         System.out.println("Precione 1 para DRAIOCHT");
@@ -198,6 +204,11 @@ return null;
         System.out.println("4. Construir Edificios para crear veiculos.");
         System.out.println("5. salir");
     }
-  
+    public void opcionesedificiosderecurso() {
+        System.out.println("\nSeleccione una opción:");
+        System.out.println("1. Construir Edificios recolector recursos 1");
+        System.out.println("2. Construir Edificios recolector recursos 2.");
+        System.out.println("3. Construir Edificios generador recursos 3");
+    }
    
 }
