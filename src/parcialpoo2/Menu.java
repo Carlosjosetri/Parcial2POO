@@ -33,10 +33,9 @@ public class Menu {
 
     public void opcionesiniciales() {
         Fase fase = new Fase();
-        Player player1 = new Player();
-        Player player2 = new Player();
-        fase.players.add(player1);
-        fase.players.add(player2);
+        
+        fase.players.add(new Player());
+        fase.players.add(new Player());
         System.out.println("Ingrese nombre Jugador 1");
         Scanner leer = new Scanner(System.in);
         fase.players.get(0).setNombre(leer.nextLine());
@@ -67,10 +66,15 @@ public class Menu {
         System.out.println("QUE EMPIEZE EL JUEGO");
         while (fase.players.get(0).edificios.get(0).getVida() > 0
                 || fase.players.get(1).edificios.get(0).getVida() > 0) {
+            System.out.println("#########################################");
             System.out.println("Empieza fase "+fase.numfase);
-            System.out.println("Turno de jugador"+n+1);
+            System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\");
+            System.out.println("Turno de jugador"+(n+1));
             menufasefuc(fase.players.get(n));
-            
+             System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\");
+            System.out.println("Turno de jugador"+(y+1));
+            menufasefuc(fase.players.get(y));
+            fase.numfase++;
            
         }
 
@@ -115,12 +119,50 @@ return null;
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
+                        menuConstrucion(player);
+                        break;
+                    case 2:
+                        System.out.println("hsdcsddc");
+                        break;
+                    case 3:
+                        flag=false;
+                        System.out.println("");
+                        break;
+                    default:
+                        System.err.println("Opción inválida. Intente de nuevo. ");
+
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer.nextLine();
+            }
+        }
+
+    }
+    public void menuConstrucion(Player player) {
+        int opcion ;
+        boolean flag=true;
+        Scanner leer = new Scanner(System.in);
+        while (flag==true) {
+            queconstruir();
+            try {
+                System.out.print("\tElección: ");
+                opcion = leer.nextInt();
+                switch (opcion) {
+                    case 1:
                         player.lag=2;
                         break;
                     case 2:
                         System.out.println("hsdcsddc");
                         break;
                     case 3:
+                        player.edificios.add(player.getRaza().ConstruirEdificacion("ENTRENAMIENTO"));
+                        flag=false;
+                        break;
+                    case 4:
+                        flag=false;
+                        break;
+                    case 5:
                         flag=false;
                         break;
                     default:
@@ -148,6 +190,14 @@ return null;
         System.out.println("2. Ver dificios disponibles para acciones.");
         System.out.println("3. Pasar de turno.");
     }
-
+  public void queconstruir() {
+        System.out.println("\nSeleccione una opción:");
+        System.out.println("1. Construir Edificios de Recoleccion.");
+        System.out.println("2. Construir Edificios para crear miliacia.");
+        System.out.println("3. Construir Edificio Entrenar milicia.");
+        System.out.println("4. Construir Edificios para crear veiculos.");
+        System.out.println("5. salir");
+    }
+  
    
 }
