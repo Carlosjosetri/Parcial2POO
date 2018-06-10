@@ -10,16 +10,14 @@ import Edificio.EdificioFactory;
  *
  * @author CARLOS
  */
-public class Draiocht implements Raza{
-     CentrodeMando Centro; 
+public class Draiocht extends Raza{
+      
+      public Edificio centro;
     @Override
     public void ConstructorCentrodeMando(){
-         CentrodeMando centro= new CentrodeMando();
-         centro.nivel=1;
-         centro.setVida(1200);
-         centro.setRecurso1(1000);
-         centro.setRecurso2(500);
-         centro.setRecurso3(300);
+         
+         
+        
      }
     @Override
     public Edificio ConstruirEdificacion(String edificio){

@@ -5,22 +5,21 @@
  */
 package parcialpoo2;
 
-import java.util.Random;
+import java.util.ArrayList;
+
+
 
 /**
  *
  * @author CARLOS
  */
-public class Main {
-     public static void main(String[] args){
-       
-     
-        Menu menu = Menu.getInstance();
-         
-        
-        menu.opcionesiniciales();
-      
-         
-         
-     } 
+public class Fase {
+public int numfase=1;
+public ArrayList<Player> players;
+
+    public Fase() {
+        players = new ArrayList<>();
+    }
+
+
 }

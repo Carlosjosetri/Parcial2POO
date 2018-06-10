@@ -9,7 +9,13 @@ import Edificio.Edificio;
  *
  * @author CARLOS
  */
-public interface Raza {
-    public void ConstructorCentrodeMando();
-    public Edificio ConstruirEdificacion(String edificio);
+public class Raza {
+ 
+    public Edificio centro;
+    public void ConstructorCentrodeMando(){
+        
+    }
+    public Edificio ConstruirEdificacion(String edificio){
+        return null;
+    }
   }

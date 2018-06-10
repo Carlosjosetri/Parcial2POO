@@ -6,25 +6,21 @@
 package Razas;
 
 import Edificio.Edificio;
+import Edificio.EdificioFactory;
 
 /**
  *
  * @author CARLOS
  */
-public class Epigeian implements Raza{
-    CentrodeMando Centro; 
+public class Epigeian extends Raza{
+ public Edificio centro;
     @Override
     public void ConstructorCentrodeMando(){
-         CentrodeMando centro= new CentrodeMando();
-         centro.nivel=1;
-         centro.setVida(3000);
-           centro.setRecurso1(1000);
-         centro.setRecurso2(500);
-         centro.setRecurso3(300);
+  
      }
       @Override
     public Edificio ConstruirEdificacion(String edificio){
-        return null;
+        return EdificioFactory.getEdificio("EPIGEIAN",edificio);
     }
        
 }

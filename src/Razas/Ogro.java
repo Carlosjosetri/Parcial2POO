@@ -11,16 +11,11 @@ import Edificio.Edificio;
  *
  * @author CARLOS
  */
-public class Ogro implements Raza{
-      CentrodeMando Centro; 
+public class Ogro extends Raza{
+      public Edificio centro;
     @Override
     public void ConstructorCentrodeMando(){
-         CentrodeMando centro= new CentrodeMando();
-         centro.nivel=1;
-         centro.setVida(800);
-           centro.setRecurso1(1000);
-         centro.setRecurso2(500);
-         centro.setRecurso3(300);
+     
      }
       @Override
     public Edificio ConstruirEdificacion(String edificio){

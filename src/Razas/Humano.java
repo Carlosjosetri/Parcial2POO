@@ -4,27 +4,26 @@
  * and open the template in the editor.
  */
 package Razas;
-
 import Edificio.Edificio;
-
+import Edificio.EdificioFactory;
 /**
  *
  * @author CARLOS
  */
-public class Humano implements Raza{
-    CentrodeMando Centro; 
+public class Humano extends Raza{
+      
+      public Edificio centro;
     @Override
     public void ConstructorCentrodeMando(){
-         CentrodeMando centro= new CentrodeMando();
-         centro.nivel=1;
-         centro.setVida(1500);
-           centro.setRecurso1(1000);
-         centro.setRecurso2(500);
-         centro.setRecurso3(300);
+         
+         
+        
      }
-      @Override
+    @Override
     public Edificio ConstruirEdificacion(String edificio){
-        return null;
+        return EdificioFactory.getEdificio("HUMANO",edificio);
+            
+        
     }
-       
+   
 }
