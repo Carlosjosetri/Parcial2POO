@@ -5,6 +5,7 @@
  */
 package Edificio;
 import Factorys.FactoryCENTRO;
+import Factorys.FactoryEntrenamiento;
 import Factorys.FactoryRecurso1;
 
 
@@ -19,6 +20,8 @@ public class EdificioFactory {
                 return FactoryRecurso1.getEdificio(tipo);
             case "CENTROMANDO":
                 return FactoryCENTRO.getEdificio(tipo);
+            case "ENTRENAMIENTO":
+                return FactoryEntrenamiento.getEdificio(tipo);
      
             
         }

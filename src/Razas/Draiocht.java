@@ -11,7 +11,7 @@ import Edificio.EdificioFactory;
  * @author CARLOS
  */
 public class Draiocht extends Raza{
-      
+       public String Nombre;
       public Edificio centro;
     @Override
     public void ConstructorCentrodeMando(){
@@ -19,6 +19,10 @@ public class Draiocht extends Raza{
          
         
      }
+    @Override
+    public void setnombre(){
+        Nombre="DRAIOCHT";
+    }
     @Override
     public Edificio ConstruirEdificacion(String edificio){
         return EdificioFactory.getEdificio("DRAIOCHT",edificio);

@@ -5,9 +5,9 @@
  */
 package Edificio;
 
-import recursos.Recurso1;
-import recursos.Recurso2;
-import recursos.Recurso3;
+
+import java.util.ArrayList;
+import recursos.recurso;
 
 /**
  *
@@ -15,17 +15,17 @@ import recursos.Recurso3;
  */
 public class CentrodeMando extends  Edificio {
     private int vida;
-    private Recurso1 recurso1;
-    private Recurso2  recurso2;
-    private Recurso3  recurso3;
+    public ArrayList<recurso> recurso1;
+    public ArrayList<recurso>   recurso2;
+    public ArrayList<recurso>  recurso3;
     int nivel;
     private String nombre;
   public CentrodeMando(EdificioBuilder builder ) {
         this.vida=builder.vida;
         this.nombre=builder.nombre;
-        this.recurso1=builder.recurso1;
-        this.recurso2=builder.recurso2;
-        this.recurso3=builder.recurso3;
+        recurso1=new ArrayList<>();
+        recurso2=new ArrayList<>();
+        recurso3=new ArrayList<>();
         this.nivel=builder.nivel;
     }
     
@@ -37,29 +37,9 @@ public class CentrodeMando extends  Edificio {
         this.vida = vida;
     }
 
-    public Recurso1 getRecurso1() {
-        return recurso1;
-    }
+    
 
-    public void setRecurso1(Recurso1 recurso1) {
-        this.recurso1 = recurso1;
-    }
-
-    public Recurso2 getRecurso2() {
-        return recurso2;
-    }
-
-    public void setRecurso2(Recurso2 recurso2) {
-        this.recurso2 = recurso2;
-    }
-
-    public Recurso3 getRecurso3() {
-        return recurso3;
-    }
-
-    public void setRecurso3(Recurso3 recurso3) {
-        this.recurso3 = recurso3;
-    }
+   
 
     public int getNivel() {
         return nivel;
@@ -82,9 +62,7 @@ public class CentrodeMando extends  Edificio {
    
     public static class EdificioBuilder{
         private int vida;
-            private Recurso1 recurso1;
-    private Recurso2  recurso2;
-    private Recurso3  recurso3;
+    
     int nivel;
     private String nombre;
         
@@ -100,18 +78,7 @@ public class CentrodeMando extends  Edificio {
             this.nombre=nombre;
             return this;
         }
-         public  EdificioBuilder recurso1(Recurso1 recurso1){
-             this.recurso1=recurso1;
-             return this;
-         }
-         public  EdificioBuilder recurso2(Recurso2 recurso2){
-             this.recurso2=recurso2;
-             return this;
-         }
-         public  EdificioBuilder recurso3(Recurso3 recurso3){
-             this.recurso3=recurso3;
-             return this;
-         }
+        
         
         public  CentrodeMando build(){
             return new CentrodeMando(this);

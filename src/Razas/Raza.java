@@ -10,12 +10,15 @@ import Edificio.Edificio;
  * @author CARLOS
  */
 public class Raza {
- 
+    public String Nombre;
     public Edificio centro;
     public void ConstructorCentrodeMando(){
         
     }
     public Edificio ConstruirEdificacion(String edificio){
         return null;
+    }
+    public void setnombre(){
+        Nombre="pokemon";
     }
   }

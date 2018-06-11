@@ -17,19 +17,19 @@ public class Recurso3 implements recurso {
         this.nombre = builder.nombre;
         this.cantidad = builder.cantidad;
     }
-
+@Override
     public String getNombre() {
         return nombre;
     }
-
+@Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+@Override
     public int getCantidad() {
         return cantidad;
     }
-
+@Override
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }

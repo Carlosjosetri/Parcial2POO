@@ -6,9 +6,13 @@
 package parcialpoo2;
 
 import Razas.Raza;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+import recursos.Factoryrecursos;
+import recursos.Recurso1;
+import recursos.recurso;
 
 /**
  *
@@ -43,19 +47,28 @@ public class Menu {
         fase.players.get(1).setNombre(leer.nextLine());
         System.out.println("Elegir raza Jugador 1");
         while (fase.players.get(0).getRaza() == null) {
-            fase.players.get(0).setRaza(getraza());
+           getraza(fase.players.get(0));
         }
 
         System.out.println("Elegir raza Jugador 2");
         while (fase.players.get(1).getRaza() == null) {
-            fase.players.get(1).setRaza(getraza());
-            System.out.println("holuu");
+             getraza(fase.players.get(1));
+           
         }
         fase.players.get(0).edificios.add(fase.players.get(0).getRaza().
                 ConstruirEdificacion("CENTROMANDO"));
         fase.players.get(1).edificios.add(fase.players.get(1).getRaza().
                 ConstruirEdificacion("CENTROMANDO"));
+       
         
+         System.out.println(fase.players.get(0).getRaza().Nombre);
+        
+         
+        
+        setRecursosiniciales(fase.players.get(0));
+        setRecursosiniciales(fase.players.get(1));
+    
+//        System.out.println(fase.players.get(0).edificios.get(0).recurso1.get(0).getCantidad());
         Random o = new Random();
         int n = o.nextInt(2);
         int y;
@@ -70,10 +83,16 @@ public class Menu {
             System.out.println("#########################################");
             System.out.println("Empieza fase "+fase.numfase);
             System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\");
-            System.out.println("Turno de jugador"+(n+1));
+            System.out.println("Turno de jugador "+(n+1));
+            System.out.println("RECURSOS DISPONIBLES||||||||");
+            System.out.println("Tienes: ");
+            mostrarRecursos(fase.players.get(n));
             menufasefuc(fase.players.get(n));
              System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\");
-            System.out.println("Turno de jugador"+(y+1));
+            System.out.println("Turno de jugador "+(y+1));
+             System.out.println("RECURSOS DISPONIBLES||||||||");
+            System.out.println("Tienes: ");
+            mostrarRecursos(fase.players.get(y));
             menufasefuc(fase.players.get(y));
             fase.numfase++;
            
@@ -81,22 +100,31 @@ public class Menu {
 
     }
 
-    public Raza getraza() {
+    public void getraza(Player player) {
         int opcion = 5;
+         boolean flag=true;
         Scanner leer = new Scanner(System.in);
-        while (opcion != 4) {
+        while (flag==true) {
             menuraza();
             try {
                 System.out.print("\tElección: ");
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
-                        return RazaFactory.getRaza("DRAIOCHT");
-
+                        player.setRaza(RazaFactory.getRaza("DRAIOCHT"));
+                        player.getRaza().Nombre="DRAIOCHT";
+                         flag=false;
+                        break;
                     case 2:
-                        return RazaFactory.getRaza("HUMANO");
+                        player.setRaza(RazaFactory.getRaza("HUMANO"));
+                         player.getRaza().Nombre="HUMANO";
+                          flag=false;
+                         break;
                     case 3:
-                        return RazaFactory.getRaza("EPIGEIA");
+                       player.setRaza(RazaFactory.getRaza("EPIGEIAN"));
+                        player.getRaza().Nombre="EPIGEIAN";
+                         flag=false;
+                        break;
                     default:
                         System.err.println("Opción inválida. Intente de nuevo. ");
 
@@ -106,7 +134,7 @@ public class Menu {
                 leer.nextLine();
             }
         }
-return null;
+
     }
 
     public void menufasefuc(Player player) {
@@ -182,6 +210,45 @@ return null;
           System.out.println(player.edificios.get(i).getNombre());
       }
   }
+  public void setRecursosiniciales(Player player){
+     player.edificios.get(0).recurso1=new ArrayList<>();
+     player.edificios.get(0).recurso2=new ArrayList<>();
+     player.edificios.get(0).recurso3=new ArrayList<>();
+   player.edificios.get(0).recurso1.add(Factoryrecursos.getRecurso("RECURSO1",
+           player.getRaza().Nombre, 1000));
+   player.edificios.get(0).recurso2.add(Factoryrecursos.getRecurso("RECURSO2",
+           player.getRaza().Nombre, 500));
+   player.edificios.get(0).recurso3.add(Factoryrecursos.getRecurso("RECURSO3",
+           player.getRaza().Nombre, 300));
+   
+      
+  }
+  
+  public void mostrarRecursos(Player player){
+      int acum1=0;
+      int acum2=0;
+      int acum3=0;
+    for(int i=0;i<player.edificios.get(0).recurso1.size();i++){
+        acum1=acum1+player.edificios.get(0).recurso1.get(i).getCantidad();
+        
+    }
+    for(int i=0;i<player.edificios.get(0).recurso2.size();i++){
+        acum2=acum2+player.edificios.get(0).recurso2.get(i).getCantidad();
+        
+    }
+    for(int i=0;i<player.edificios.get(0).recurso3.size();i++){
+        acum3=acum3+player.edificios.get(0).recurso3.get(i).getCantidad();
+        
+    }
+    System.out.println(acum1+" de "+Factoryrecursos.getRecurso("RECURSO1",
+           player.getRaza().Nombre,0).getNombre());
+    System.out.println(acum2+" de "+Factoryrecursos.getRecurso("RECURSO2",
+           player.getRaza().Nombre,0).getNombre());
+    System.out.println(acum3+" de "+Factoryrecursos.getRecurso("RECURSO3",
+           player.getRaza().Nombre,0).getNombre());
+      
+  }
+  
 
     public void menuraza() {
         System.out.println("Precione 1 para DRAIOCHT");

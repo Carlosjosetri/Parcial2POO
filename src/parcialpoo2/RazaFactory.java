@@ -19,7 +19,7 @@ public class RazaFactory {
         switch (opcion) {
             case "HUMANO":
                 return new Humano();
-            case "EPIGEIA":
+            case "EPIGEIAN":
                 return new Epigeian();
             case "DRAIOCHT":
                 return new Draiocht();

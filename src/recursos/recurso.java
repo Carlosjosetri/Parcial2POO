@@ -10,5 +10,15 @@ package recursos;
  * @author CARLOS
  */
 public interface recurso {
+    public void setCantidad(int cantidad);
+    public String getNombre();
+    public void setNombre(String nombre);
+    public int getCantidad();
+    
+
+   
+    
+   
+    
     
 }

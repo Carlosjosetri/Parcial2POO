@@ -13,11 +13,16 @@ import Edificio.EdificioFactory;
  * @author CARLOS
  */
 public class Epigeian extends Raza{
+     public String Nombre;
  public Edificio centro;
     @Override
     public void ConstructorCentrodeMando(){
   
      }
+    @Override
+    public void setnombre(){
+        Nombre="EPIGEIAN";
+    }
       @Override
     public Edificio ConstruirEdificacion(String edificio){
         return EdificioFactory.getEdificio("EPIGEIAN",edificio);

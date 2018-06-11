@@ -18,18 +18,22 @@ public class Recurso1 implements recurso {
         this.cantidad = builder.cantidad;
     }
 
+    public Recurso1() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+@Override
     public String getNombre() {
         return nombre;
     }
-
+@Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+@Override
     public int getCantidad() {
         return cantidad;
     }
-
+@Override
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
