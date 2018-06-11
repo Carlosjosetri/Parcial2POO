@@ -18,14 +18,14 @@ public class FactoryEntrenamiento {
     public static Edificio getEdificio(String tipo) {
         switch (tipo) {
             case "DRAIOCHT":
-                return new EdificioEntrenamiento.EdificioBuilder().vida(800)
-                        .nombre("Entrenamiento DRAIOCHT").build();
+                return new EdificioEntrenamiento.EdificioBuilder().nombre("Edificio de Entrenamiento DRAIOCHT").Precio1(400).Precio2(200).Precio3(0)
+                        .vida(2000).Trabajo(1).Construccion(1).disponible("En construccion").disponiblilidad(false).build();
             case "HUMANO":
-                return new EdificioEntrenamiento.EdificioBuilder().vida(700)
-                        .nombre("Entrenamiento HUMANO").build();
+               return new EdificioEntrenamiento.EdificioBuilder().nombre("Edificio de Entrenamiento HUMANO").Precio1(300).Precio2(200).Precio3(0)
+                        .vida(1800).Trabajo(1).Construccion(2).disponible("En construccion").disponiblilidad(false).build();
             case "EPIGEIAN":
-                return new EdificioEntrenamiento.EdificioBuilder().vida(21000)
-                        .nombre("Entrenamiento EPIGEIAN").build();
+                return new EdificioEntrenamiento.EdificioBuilder().nombre("Edificio de Entrenamiento EPIGEIAN").Precio1(500).Precio2(300).Precio3(0)
+                        .vida(5000).Trabajo(2).Construccion(2).disponible("En construccion").disponiblilidad(false).build();
      
             
         }

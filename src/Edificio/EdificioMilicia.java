@@ -9,7 +9,7 @@ package Edificio;
  *
  * @author CARLOS
  */
-public class EdificioRecurso3 extends Edificio {
+public class EdificioMilicia extends Edificio {
 
     private int vida;
     private int Precio1;
@@ -24,7 +24,7 @@ public class EdificioRecurso3 extends Edificio {
 
     private String nombre;
 
-    public EdificioRecurso3(EdificioBuilder builder) {
+    public EdificioMilicia(EdificioBuilder builder) {
         this.vida = builder.vida;
         this.Precio1 = builder.Precio1;
         this.Precio2 = builder.Precio2;
@@ -197,8 +197,8 @@ public class EdificioRecurso3 extends Edificio {
             return this;
         }
 
-        public EdificioRecurso3 build() {
-            return new EdificioRecurso3(this);
+        public EdificioMilicia build() {
+            return new EdificioMilicia(this);
         }
 
     }

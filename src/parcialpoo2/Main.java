@@ -5,7 +5,10 @@
  */
 package parcialpoo2;
 
-import java.util.Random;
+import Edificio.Edificio;
+import Edificio.EdificioFactory;
+
+
 
 /**
  *
@@ -13,7 +16,8 @@ import java.util.Random;
  */
 public class Main {
      public static void main(String[] args){
-    
+    Edificio temporal =EdificioFactory.getEdificio("DRAIOCHT","ENTRENAMIENTO" );
+         System.out.println(temporal.getPrecio1());
         Menu menu = Menu.getInstance();
          
         

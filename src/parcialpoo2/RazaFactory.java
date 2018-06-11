@@ -7,8 +7,7 @@ package parcialpoo2;
 import Razas.Draiocht;
 import Razas.Epigeian;
 import Razas.Humano;
-import Razas.Ogro;
-import Razas.Dylan;
+
 import Razas.Raza;
 /**
  *
@@ -23,10 +22,7 @@ public class RazaFactory {
                 return new Epigeian();
             case "DRAIOCHT":
                 return new Draiocht();
-            case "DYlAN":
-                return new Dylan();
-            case "OGRO":
-                return new Ogro();
+        
             
         }
         return null;

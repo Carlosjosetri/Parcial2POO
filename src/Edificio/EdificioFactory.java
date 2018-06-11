@@ -6,7 +6,6 @@
 package Edificio;
 import Factorys.FactoryCENTRO;
 import Factorys.FactoryEntrenamiento;
-import Factorys.FactoryRecurso1;
 
 
 /**
@@ -16,8 +15,7 @@ import Factorys.FactoryRecurso1;
 public class EdificioFactory {
     public static Edificio getEdificio(String tipo,String opcion) {
         switch (opcion) {
-            case "RECURSO1":
-                return FactoryRecurso1.getEdificio(tipo);
+            
             case "CENTROMANDO":
                 return FactoryCENTRO.getEdificio(tipo);
             case "ENTRENAMIENTO":

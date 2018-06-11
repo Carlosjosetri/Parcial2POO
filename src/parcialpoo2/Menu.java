@@ -5,6 +5,8 @@
  */
 package parcialpoo2;
 
+import Edificio.Edificio;
+import Edificio.EdificioFactory;
 import Razas.Raza;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -84,15 +86,11 @@ public class Menu {
             System.out.println("Empieza fase "+fase.numfase);
             System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\");
             System.out.println("Turno de jugador "+(n+1));
-            System.out.println("RECURSOS DISPONIBLES||||||||");
-            System.out.println("Tienes: ");
-            mostrarRecursos(fase.players.get(n));
+            System.out.println("");
             menufasefuc(fase.players.get(n));
              System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\");
             System.out.println("Turno de jugador "+(y+1));
-             System.out.println("RECURSOS DISPONIBLES||||||||");
-            System.out.println("Tienes: ");
-            mostrarRecursos(fase.players.get(y));
+             System.out.println("");
             menufasefuc(fase.players.get(y));
             fase.numfase++;
            
@@ -105,9 +103,11 @@ public class Menu {
          boolean flag=true;
         Scanner leer = new Scanner(System.in);
         while (flag==true) {
+            
             menuraza();
             try {
                 System.out.print("\tElección: ");
+                 System.out.println("");
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
@@ -142,9 +142,16 @@ public class Menu {
         boolean flag=true;
         Scanner leer = new Scanner(System.in);
         while (flag==true) {
+            System.out.println("RECURSOS DISPONIBLES||||||||");
+            System.out.println("Tienes: ");
+             
+            mostrarRecursos(player);
+             System.out.println("");
             opcionesMenuPrincipal();
+             
             try {
                 System.out.print("\tElección: ");
+                 System.out.println("");
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
@@ -154,6 +161,9 @@ public class Menu {
                         edificiosDisponibles( player);
                         break;
                     case 3:
+                        edificiosDisponibles( player);
+                        break;
+                    case 4:
                         flag=false;
                         System.out.println("");
                         break;
@@ -176,6 +186,7 @@ public class Menu {
             queconstruir();
             try {
                 System.out.print("\tElección: ");
+                 System.out.println("");
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
@@ -185,7 +196,7 @@ public class Menu {
                         edificiosDisponibles( player);
                         break;
                     case 3:
-                        player.edificios.add(player.getRaza().ConstruirEdificacion("ENTRENAMIENTO"));
+                        compraEENtrenamiento(player);
                         flag=false;
                         break;
                     case 4:
@@ -206,9 +217,13 @@ public class Menu {
 
     }
   public void edificiosDisponibles(Player player){
-      for(int i=0;i<player.edificios.size();i++){
-          System.out.println(player.edificios.get(i).getNombre());
+    
+      for(int i=1;i<player.edificios.size();i++){
+          System.out.println((i)+"--"+player.edificios.get(i).getNombre()
+                  +" Estado: "+player.edificios.get(i).getDisponible());
+        
       }
+      System.out.println("");
   }
   public void setRecursosiniciales(Player player){
      player.edificios.get(0).recurso1=new ArrayList<>();
@@ -249,19 +264,96 @@ public class Menu {
       
   }
   
+public void compraEENtrenamiento(Player player){
+    Edificio temporal =EdificioFactory.getEdificio( player.getRaza().Nombre,"ENTRENAMIENTO");
+    
+      int acum1=0;
+      int acum2=0;
+      int acum3=0;
+      int temp1=temporal.getPrecio1();
+      int temp2=temporal.getPrecio2();
+      int temp3=temporal.getPrecio3();
+    for(int i=0;i<player.edificios.get(0).recurso1.size();i++){
+        acum1=acum1+player.edificios.get(0).recurso1.get(i).getCantidad();
+        
+    }
+    for(int i=0;i<player.edificios.get(0).recurso2.size();i++){
+        acum2=acum2+player.edificios.get(0).recurso2.get(i).getCantidad();
+        
+    }
+    for(int i=0;i<player.edificios.get(0).recurso3.size();i++){
+        acum3=acum3+player.edificios.get(0).recurso3.get(i).getCantidad();
+        
+    }
+    if(temporal.getPrecio1()<acum1 && temporal.getPrecio2()<acum2 && temporal.getPrecio3()<acum3){
+         for(int i=0;i<player.edificios.get(0).recurso1.size();i++){
+        acum1=player.edificios.get(0).recurso1.get(i).getCantidad();
+        if(acum1>temp1){
+            player.edificios.get(0).recurso1.get(i)
+            .setCantidad(player.edificios.get(0).recurso1.get(i).getCantidad()-temp1);
+            break;
+        }else{
+            acum1=temp1-acum1;
+             player.edificios.get(0).recurso1.get(i)
+            .setCantidad(player.edificios.get(0).recurso1.get(i).getCantidad()-temp1);
+        }
+        
+    }
+         for(int i=0;i<player.edificios.get(0).recurso2.size();i++){
+        acum1=player.edificios.get(0).recurso2.get(i).getCantidad();
+        if(acum2>temp2){
+            player.edificios.get(0).recurso2.get(i)
+            .setCantidad(player.edificios.get(0).recurso2.get(i).getCantidad()-temp2);
+            break;
+        }else{
+            acum1=temp2-acum2;
+             player.edificios.get(0).recurso2.get(i)
+            .setCantidad(player.edificios.get(0).recurso2.get(i).getCantidad()-temp2);
+        }
+        
+    }
+         for(int i=0;i<player.edificios.get(0).recurso3.size();i++){
+        acum1=player.edificios.get(0).recurso3.get(i).getCantidad();
+        if(acum3>temp3){
+            player.edificios.get(0).recurso3.get(i)
+            .setCantidad(player.edificios.get(0).recurso3.get(i).getCantidad()-temp3);
+            break;
+        }else{
+            acum3=temp3-acum3;
+             player.edificios.get(0).recurso3.get(i)
+            .setCantidad(player.edificios.get(0).recurso3.get(i).getCantidad()-temp3);
+        }
+        
+    }
+ 
+        player.edificios.add(player.getRaza().ConstruirEdificacion("ENTRENAMIENTO"));
+    }else{
+        System.out.println("################################");
+        System.out.println("###NO HAY RECURSOS SUFICIENTES###");
+          System.out.println("#################################");
+          System.out.println("");
+    }
+    temporal=null;
+}
 
+public void menudeuso(){
+    System.out.println("Estos son tus Edificios ");
+}
     public void menuraza() {
         System.out.println("Precione 1 para DRAIOCHT");
         System.out.println("Precione 2 para HUMANO");
         System.out.println("Precione 3 para EPIGEIAN");
+        
 
     }
 
     public void opcionesMenuPrincipal() {
         System.out.println("\nSeleccione una opción:");
         System.out.println("1. Construir Edificios.");
-        System.out.println("2. Ver dificios disponibles para acciones.");
-        System.out.println("3. Pasar de turno.");
+        System.out.println("2. Ver Edificios disponibles para acciones.");
+        System.out.println("3. Usar Edificios");
+        System.out.println("4. Pasar de turno.");
+        
     }
   public void queconstruir() {
         System.out.println("\nSeleccione una opción:");
@@ -270,12 +362,14 @@ public class Menu {
         System.out.println("3. Construir Edificio Entrenar milicia.");
         System.out.println("4. Construir Edificios para crear veiculos.");
         System.out.println("5. salir");
+        
     }
     public void opcionesedificiosderecurso() {
         System.out.println("\nSeleccione una opción:");
         System.out.println("1. Construir Edificios recolector recursos 1");
         System.out.println("2. Construir Edificios recolector recursos 2.");
         System.out.println("3. Construir Edificios generador recursos 3");
+       
     }
    
 }
