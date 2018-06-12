@@ -16,8 +16,7 @@ import Edificio.EdificioFactory;
  */
 public class Main {
      public static void main(String[] args){
-    Edificio temporal =EdificioFactory.getEdificio("DRAIOCHT","ENTRENAMIENTO" );
-         System.out.println(temporal.getPrecio1());
+ 
         Menu menu = Menu.getInstance();
          
         

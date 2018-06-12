@@ -216,6 +216,108 @@ public class Menu {
         }
 
     }
+    public void menuConstrucionRecursos(Player player) {
+        int opcion ;
+        boolean flag=true;
+        Scanner leer = new Scanner(System.in);
+        while (flag==true) {
+            opcionesedificiosderecurso();
+            try {
+                System.out.print("\tElección: ");
+                 System.out.println("");
+                opcion = leer.nextInt();
+                switch (opcion) {
+                    case 1:
+                        player.lag=2;
+                        break;
+                    case 2:
+                        edificiosDisponibles( player);
+                        break;
+                    case 3:
+                        compra(player,"ENTRENAMIENTO");
+                        flag=false;
+                        break;
+                    case 4:
+                        flag=false;
+                        break;
+              
+                    default:
+                        System.err.println("Opción inválida. Intente de nuevo. ");
+
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer.nextLine();
+            }
+        }
+
+    }
+    public void menuConstrucionVehiculos(Player player) {
+        int opcion ;
+        boolean flag=true;
+        Scanner leer = new Scanner(System.in);
+        while (flag==true) {
+            opcionesedificiosdeVehiculo();
+            try {
+                System.out.print("\tElección: ");
+                 System.out.println("");
+                opcion = leer.nextInt();
+                switch (opcion) {
+                    case 1:
+                        player.lag=2;
+                        break;
+                    case 2:
+                        edificiosDisponibles( player);
+                        break;
+                    case 3:
+                  
+                        flag=false;
+                        break;
+                
+                      
+                    default:
+                        System.err.println("Opción inválida. Intente de nuevo. ");
+
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer.nextLine();
+            }
+        }
+
+    }
+    public void menuConstrucionMilicias(Player player) {
+        int opcion ;
+        boolean flag=true;
+        Scanner leer = new Scanner(System.in);
+        while (flag==true) {
+            opcionesedificiosdeMilicia();
+            try {
+                System.out.print("\tElección: ");
+                 System.out.println("");
+                opcion = leer.nextInt();
+                switch (opcion) {
+                    case 1:
+                        player.lag=2;
+                        break;
+                    case 2:
+                        edificiosDisponibles( player);
+                        break;
+                    case 3:
+                        flag=false;
+                        break;
+                  
+                    default:
+                        System.err.println("Opción inválida. Intente de nuevo. ");
+
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer.nextLine();
+            }
+        }
+
+    }
   public void edificiosDisponibles(Player player){
     
       for(int i=1;i<player.edificios.size();i++){
@@ -369,7 +471,19 @@ public void menudeuso(){
         System.out.println("1. Construir Edificios recolector recursos 1");
         System.out.println("2. Construir Edificios recolector recursos 2.");
         System.out.println("3. Construir Edificios generador recursos 3");
-       
+        System.out.println("4. salir");
+    }
+    public void opcionesedificiosdeMilicia() {
+        System.out.println("\nSeleccione una opción:");
+        System.out.println("1. Construir Edificios productor de Milicia");
+        System.out.println("2. Construir Edificios productor de Milica Especial");
+        System.out.println("3. salir");
+    }
+    public void opcionesedificiosdeVehiculo() {
+        System.out.println("\nSeleccione una opción:");
+        System.out.println("1. Construir Edificios productor de Vehiculo");
+        System.out.println("2. Construir Edificios productor de Vehiculo 2");
+        System.out.println("3. salir");
     }
    
 }
