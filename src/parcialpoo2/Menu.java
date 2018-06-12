@@ -190,16 +190,17 @@ public class Menu {
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
-                        player.lag=2;
+                         menuConstrucionRecursos(player);
                         break;
                     case 2:
-                        edificiosDisponibles( player);
+                        menuConstrucionMilicias(player);
                         break;
                     case 3:
                         compra(player,"ENTRENAMIENTO");
                         flag=false;
                         break;
                     case 4:
+                        menuConstrucionVehiculos(player);
                         flag=false;
                         break;
                     case 5:
@@ -221,20 +222,22 @@ public class Menu {
         boolean flag=true;
         Scanner leer = new Scanner(System.in);
         while (flag==true) {
-            opcionesedificiosderecurso();
+            opcionesedificiosderecurso(player);
             try {
                 System.out.print("\tElección: ");
                  System.out.println("");
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
-                        player.lag=2;
+                       compra(player,"RECURSO1");
+                        flag=false;
                         break;
                     case 2:
-                        edificiosDisponibles( player);
+                         compra(player,"RECURSO2");
+                          flag=false;
                         break;
                     case 3:
-                        compra(player,"ENTRENAMIENTO");
+                        compra(player,"RECURSO3");
                         flag=false;
                         break;
                     case 4:
@@ -264,10 +267,12 @@ public class Menu {
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
-                        player.lag=2;
+                        compra(player,"VEHICULO");
+                         flag=false;
                         break;
                     case 2:
-                        edificiosDisponibles( player);
+                        compra(player,"VEHICULO2");
+                         flag=false;
                         break;
                     case 3:
                   
@@ -298,10 +303,10 @@ public class Menu {
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
-                        player.lag=2;
+                        compra(player,"MILICIA");
                         break;
                     case 2:
-                        edificiosDisponibles( player);
+                        compra(player,"MILICIAE");
                         break;
                     case 3:
                         flag=false;
@@ -466,11 +471,20 @@ public void menudeuso(){
         System.out.println("5. salir");
         
     }
-    public void opcionesedificiosderecurso() {
+    public void opcionesedificiosderecurso(Player player) {
+         recurso temp=Factoryrecursos.getRecurso("RECURSO1", player.getRaza().Nombre, 0);
+         recurso temp2=Factoryrecursos.getRecurso("RECURSO2", player.getRaza().Nombre, 0);
+         recurso temp3=Factoryrecursos.getRecurso("RECURSO3", player.getRaza().Nombre, 0);
+        String prueba=temp.getNombre();
+        String prueba2=temp2.getNombre();
+        String prueba3=temp3.getNombre();
+            temp=null;
+            temp2=null;
+            temp3=null;
         System.out.println("\nSeleccione una opción:");
-        System.out.println("1. Construir Edificios recolector recursos 1");
-        System.out.println("2. Construir Edificios recolector recursos 2.");
-        System.out.println("3. Construir Edificios generador recursos 3");
+        System.out.println("1. Construir Edificios recolector de "+prueba);
+        System.out.println("2. Construir Edificios recolector de "+prueba2);
+        System.out.println("3. Construir Edificios generador de "+prueba3);
         System.out.println("4. salir");
     }
     public void opcionesedificiosdeMilicia() {
