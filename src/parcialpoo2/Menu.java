@@ -196,7 +196,7 @@ public class Menu {
                         edificiosDisponibles( player);
                         break;
                     case 3:
-                        compraEENtrenamiento(player);
+                        compra(player,"ENTRENAMIENTO");
                         flag=false;
                         break;
                     case 4:
@@ -264,8 +264,8 @@ public class Menu {
       
   }
   
-public void compraEENtrenamiento(Player player){
-    Edificio temporal =EdificioFactory.getEdificio( player.getRaza().Nombre,"ENTRENAMIENTO");
+public void compra(Player player,String Edificio){
+    Edificio temporal =EdificioFactory.getEdificio( player.getRaza().Nombre,Edificio);
     
       int acum1=0;
       int acum2=0;
@@ -326,7 +326,7 @@ public void compraEENtrenamiento(Player player){
         
     }
  
-        player.edificios.add(player.getRaza().ConstruirEdificacion("ENTRENAMIENTO"));
+        player.edificios.add(player.getRaza().ConstruirEdificacion(Edificio));
     }else{
         System.out.println("################################");
         System.out.println("###NO HAY RECURSOS SUFICIENTES###");
