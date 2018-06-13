@@ -21,7 +21,7 @@ public class EdificioEntrenamiento extends Edificio {
     private int acumc;
     private boolean disponiblilidad;
     private String disponible;
-
+    
     private String nombre;
 
     public EdificioEntrenamiento(EdificioBuilder builder) {
