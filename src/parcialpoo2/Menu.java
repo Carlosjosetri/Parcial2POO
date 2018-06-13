@@ -93,7 +93,7 @@ public class Menu {
              System.out.println("");
             menufasefuc(fase.players.get(y));
             fase.numfase++;
-           
+            incremento(fase);
         }
 
     }
@@ -442,6 +442,28 @@ public void compra(Player player,String Edificio){
     }
     temporal=null;
 }
+
+public void Construccion(Player player){
+     for(int i=1;i<player.edificios.size();i++){
+          System.out.println((i)+"--"+player.edificios.get(i).getNombre()
+                  +" Estado: "+player.edificios.get(i).getDisponible());
+        
+      }
+}
+ 
+public void incremento(Fase fase){
+    for(int i=0;i<fase.players.size();i++){
+               for(int j=1;i<fase.players.get(i).edificios.size();j++){
+          if(fase.players.get(i).edificios.get(j).isDisponiblilidad()==false){
+              fase.players.get(i).edificios.get(j).setDisponiblilidad(true);
+              fase.players.get(i).edificios.get(j).setDisponible("En funcionamiento");
+          }
+                     
+                 }
+               
+           }
+       
+      }
 
 public void menudeuso(){
     System.out.println("Estos son tus Edificios ");
