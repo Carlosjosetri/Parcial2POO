@@ -88,12 +88,14 @@ public class Menu {
             System.out.println("Turno de jugador "+(n+1));
             System.out.println("");
             menufasefuc(fase.players.get(n));
+            usaredificio(fase.players.get(n));
              System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\");
             System.out.println("Turno de jugador "+(y+1));
              System.out.println("");
             menufasefuc(fase.players.get(y));
             fase.numfase++;
             incremento(fase);
+            
         }
 
     }
@@ -326,12 +328,77 @@ public class Menu {
   public void edificiosDisponibles(Player player){
     
       for(int i=1;i<player.edificios.size();i++){
-          System.out.println((i)+"--"+player.edificios.get(i).getNombre()
+          System.out.println((i)+"--"+player.edificios.get(i).getNombre()+""+player.getRaza().Nombre
                   +" Estado: "+player.edificios.get(i).getDisponible());
         
       }
       System.out.println("");
   }
+  
+  public void usaredificio(Player player){
+      edificiosDisponibles(player);
+      System.out.println("");
+      System.out.println("@@@ ELIJA EL NUMERO DE EDIFICIO A USAR");
+      int opcion ;
+       boolean flag=true;
+      Scanner leer = new Scanner(System.in);
+          while (flag==true) {
+           
+            try {
+               
+                opcion = leer.nextInt();
+                if(opcion<=player.edificios.size()-1){
+                    System.out.println("Holioii");
+                        flag=false;
+                }else{
+                     System.err.println("Opción inválida. Intente de nuevo. ");
+                }
+                
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer.nextLine();
+            }
+        }
+  }
+   public void menudeuso(Player player) {
+        int opcion ;
+        boolean flag=true;
+        Scanner leer = new Scanner(System.in);
+        while (flag==true) {
+            queconstruir();
+            try {
+                System.out.print("\tElección: ");
+                 System.out.println("");
+                opcion = leer.nextInt();
+                switch (opcion) {
+                    case 1:
+                         menuConstrucionRecursos(player);
+                        break;
+                    case 2:
+                        menuConstrucionMilicias(player);
+                        break;
+                    case 3:
+                        compra(player,"ENTRENAMIENTO");
+                        flag=false;
+                        break;
+                    case 4:
+                        menuConstrucionVehiculos(player);
+                        flag=false;
+                        break;
+                    case 5:
+                        flag=false;
+                        break;
+                    default:
+                        System.err.println("Opción inválida. Intente de nuevo. ");
+
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer.nextLine();
+            }
+        }
+
+    }
   public void setRecursosiniciales(Player player){
      player.edificios.get(0).recurso1=new ArrayList<>();
      player.edificios.get(0).recurso2=new ArrayList<>();
@@ -443,20 +510,34 @@ public void compra(Player player,String Edificio){
     temporal=null;
 }
 
-public void Construccion(Player player){
-     for(int i=1;i<player.edificios.size();i++){
-          System.out.println((i)+"--"+player.edificios.get(i).getNombre()
-                  +" Estado: "+player.edificios.get(i).getDisponible());
-        
-      }
+public void Trabajocont(Fase fase){
+  for(int i=0;i<fase.players.size();i++){
+               for(int j=1;i<fase.players.get(i).edificios.size();j++){
+                   System.out.println("wefewf");
+          if(fase.players.get(i).edificios.get(j).isDisponiblilidad()){
+              if(fase.players.get(i).edificios.get(j).isTrabajando()){
+                  
+              }else{
+                  fase.players.get(i).edificios.get(j).
+                          setAcumt(fase.players.get(i).edificios.get(j).getAcumt()+1);
+              }
+          }
+                     
+                 }
+               
+           }
 }
  
 public void incremento(Fase fase){
     for(int i=0;i<fase.players.size();i++){
-               for(int j=1;i<fase.players.get(i).edificios.size();j++){
-          if(fase.players.get(i).edificios.get(j).isDisponiblilidad()==false){
+               for(int j=1;i<fase.players.get(i).edificios.size()-1;j++){
+                  
+          if(fase.players.get(i).edificios.get(j).getAcumc()==fase.players.get(i).edificios.get(j).getConstruccion()){
               fase.players.get(i).edificios.get(j).setDisponiblilidad(true);
               fase.players.get(i).edificios.get(j).setDisponible("En funcionamiento");
+          }else{
+              fase.players.get(i).edificios.get(j). 
+                      setAcumc(fase.players.get(i).edificios.get(j).getAcumc()+1);
           }
                      
                  }
@@ -479,7 +560,7 @@ public void menudeuso(){
     public void opcionesMenuPrincipal() {
         System.out.println("\nSeleccione una opción:");
         System.out.println("1. Construir Edificios.");
-        System.out.println("2. Ver Edificios disponibles para acciones.");
+        System.out.println("2. Ver Edificios disponibles ");
         System.out.println("3. Usar Edificios");
         System.out.println("4. Pasar de turno.");
         

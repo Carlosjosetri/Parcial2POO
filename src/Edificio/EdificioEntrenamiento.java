@@ -21,7 +21,7 @@ public class EdificioEntrenamiento extends Edificio {
     private int acumc;
     private boolean disponiblilidad;
     private String disponible;
-    
+    private boolean trabajando;
     private String nombre;
 
     public EdificioEntrenamiento(EdificioBuilder builder) {
@@ -36,9 +36,18 @@ public class EdificioEntrenamiento extends Edificio {
         this.nombre = builder.nombre;
         this.disponible = builder.disponible;
         this.disponiblilidad = builder.disponiblilidad;
-
+        this.trabajando=false;
     }
 
+    public boolean isTrabajando() {
+        return trabajando;
+    }
+
+    public void setTrabajando(boolean trabjando) {
+        this.trabajando = trabjando;
+    }
+    
+    
     public int getVida() {
         return vida;
     }

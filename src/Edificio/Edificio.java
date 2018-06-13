@@ -93,5 +93,12 @@ public int getTrabajo() {
     public void setDisponible(String disponible) {
        
     }
+     public boolean isTrabajando() {
+        return false;
+    }
+
+    public void setTrabajando(boolean trabjando) {
+     
+    }
 }
     
