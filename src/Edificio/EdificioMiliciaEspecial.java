@@ -23,7 +23,7 @@ public class EdificioMiliciaEspecial extends Edificio {
     private String disponible;
    private boolean trabajando;
     private String nombre;
-
+ public String codigo;
     public EdificioMiliciaEspecial(EdificioBuilder builder) {
         this.vida = builder.vida;
         this.Precio1 = builder.Precio1;
@@ -37,6 +37,7 @@ public class EdificioMiliciaEspecial extends Edificio {
         this.disponible = builder.disponible;
         this.disponiblilidad = builder.disponiblilidad;
    this.trabajando=false;
+   this.codigo="R1E2G3A4L5A6S7";
     }
 
     public boolean isTrabajando() {

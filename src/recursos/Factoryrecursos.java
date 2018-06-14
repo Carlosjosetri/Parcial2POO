@@ -17,18 +17,18 @@ public class Factoryrecursos {
                     case "RECURSO1":
                         return new Recurso1.RecursoBuilder().nombre("Oro").cantidad(cant).build() ;
                     case "RECURSO2":
-                        return new Recurso1.RecursoBuilder().nombre("crystal").cantidad(cant).build() ;
+                        return new Recurso2.RecursoBuilder().nombre("crystal").cantidad(cant).build() ;
                     case "RECURSO3":
-                        return new Recurso1.RecursoBuilder().nombre("Mana").cantidad(cant).build() ;
+                        return new Recurso3.RecursoBuilder().nombre("Mana").cantidad(cant).build() ;
                 }
             case "HUMANO":
                    switch (tipo){
                     case "RECURSO1":
                         return new Recurso1.RecursoBuilder().nombre("Billetes").cantidad(cant).build() ;
                     case "RECURSO2":
-                        return new Recurso1.RecursoBuilder().nombre("Metal").cantidad(cant).build() ;
+                        return new Recurso2.RecursoBuilder().nombre("Metal").cantidad(cant).build() ;
                     case "RECURSO3":
-                        return new Recurso1.RecursoBuilder().nombre("Electricidad").cantidad(cant).build() ;
+                        return new Recurso3.RecursoBuilder().nombre("Electricidad").cantidad(cant).build() ;
                 }
             case "EPIGEIAN":
                    switch (tipo){

@@ -92,7 +92,7 @@ public class Menu {
             menufasefuc(fase.players.get(y));
             fase.numfase++;
             incremento(fase);
-
+            Trabajocont(fase);
         }
 
     }
@@ -399,6 +399,70 @@ public class Menu {
         }
 
     }
+    
+   public void eleccion (Player player,int edi){
+       switch(player.edificios.get(edi).codigo){
+           case "N1E2S3T4O5R6":
+               
+               break;
+               
+           case "M1E2":
+                menucreamilicia(player,edi);
+               break;
+               
+           case "R1E2G3A4L5A6S7":
+               break;
+               
+           case "U1N2":
+               break;
+               
+           case "C1U2B3O4":
+               break;
+               
+           case "D1E2":
+               break;
+               
+           case "R1U2B3I4K5":
+               break;
+               
+           case "https://thecubicle.us/":
+               break;
+               
+       }
+   }
+   
+     public void menucreamilicia(Player player, int edificioindex) {
+        int opcion;
+        boolean flag = true;
+        Scanner leer = new Scanner(System.in);
+        while (flag == true) {
+            System.out.println("Seguro quieres usar este edificio?");
+            System.out.println("1-Crear Milicia");
+            System.out.println("2-Salir");
+            try {
+                System.out.print("\tElección: ");
+                System.out.println("");
+                opcion = leer.nextInt();
+                switch (opcion) {
+                    case 1:
+                        System.out.println();
+                        flag = false;
+                        break;
+                    case 2:
+                        flag = false;
+                        break;
+
+                    default:
+                        System.err.println("Opción inválida. Intente de nuevo. ");
+
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer.nextLine();
+            }
+        }
+
+    }
 
     public void setRecursosiniciales(Player player) {
         player.edificios.get(0).recurso1 = new ArrayList<>();
@@ -513,7 +577,7 @@ public class Menu {
     public void Trabajocont(Fase fase) {
         for (int i = 0; i < fase.players.size(); i++) {
             for (int j = 1; i < fase.players.get(i).edificios.size(); j++) {
-                System.out.println("wefewf");
+               
                 if (fase.players.get(i).edificios.get(j).isDisponiblilidad()) {
                     if (fase.players.get(i).edificios.get(j).isTrabajando()) {
 

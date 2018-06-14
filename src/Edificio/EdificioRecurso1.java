@@ -23,7 +23,7 @@ public class EdificioRecurso1 extends Edificio {
     private String disponible;
    private boolean trabajando;
     private String nombre;
-
+ public String codigo;
     public EdificioRecurso1(EdificioBuilder builder) {
         this.vida = builder.vida;
         this.Precio1 = builder.Precio1;
@@ -37,6 +37,7 @@ public class EdificioRecurso1 extends Edificio {
         this.disponible = builder.disponible;
         this.disponiblilidad = builder.disponiblilidad;
    this.trabajando=false;
+   this.codigo="U1N2";
     }
 
     public boolean isTrabajando() {

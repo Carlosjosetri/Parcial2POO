@@ -17,8 +17,10 @@ public class Player {
     private String Nombre;
     public ArrayList<Edificio> edificios;
     private Raza raza;
-public int lag=100;
-    public Player() {
+    
+
+    
+public Player() {
     edificios = new ArrayList<>();
     }
 
