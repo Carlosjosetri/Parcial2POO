@@ -5,8 +5,6 @@
  */
 package parcialpoo2;
 
-import Edificio.Edificio;
-import Edificio.EdificioFactory;
 
 
 

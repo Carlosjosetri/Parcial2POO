@@ -24,6 +24,14 @@ public class Milicia implements miliciapadre {
         this.entrenado = false;
     }
 
+    public boolean isEntrenado() {
+        return entrenado;
+    }
+
+    public void setEntrenado(boolean entrenado) {
+        this.entrenado = entrenado;
+    }
+
     @Override
     public int getVida() {
         return vida;

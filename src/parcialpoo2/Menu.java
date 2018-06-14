@@ -471,7 +471,7 @@ public class Menu {
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
-                           player.edificios.get(0).recurso1.add(player.edificios.get(edi).getrecursos(player.getRaza().Nombre));
+                           player.edificios.get(0).recurso1.add(player.edificios.get(edificioindex).getrecursos(player.getRaza().Nombre));
                         flag = false;
                         break;
                     case 2:
@@ -505,7 +505,7 @@ public class Menu {
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
-                         player.edificios.get(0).recurso2.add(player.edificios.get(edi).getrecursos(player.getRaza().Nombre));
+                         player.edificios.get(0).recurso2.add(player.edificios.get(edificioindex).getrecursos(player.getRaza().Nombre));
                         flag = false;
                         break;
                     case 2:
@@ -710,7 +710,7 @@ public class Menu {
 
     public void Trabajocont(Fase fase) {
         for (int i = 0; i < fase.players.size(); i++) {
-            for (int j = 1; i < fase.players.get(i).edificios.size(); j++) {
+            for (int j = 1; j < fase.players.get(i).edificios.size(); j++) {
                
                 if (fase.players.get(i).edificios.get(j).isDisponiblilidad()) {
                     if (fase.players.get(i).edificios.get(j).isTrabajando()) {
