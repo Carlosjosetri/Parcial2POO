@@ -14,5 +14,6 @@ public interface miliciapadre {
     public String getNombre();
     public void setNombre(String nombre);
     public int getataque();
- 
+  public void setVida(int vida);
+  public int getVida();
 }

@@ -15,15 +15,25 @@ import Milicias.*;
 public class Vehiculo1 implements miliciapadre {
     private String nombre;
     private int ataque;
-
+    private int vida;
     public Vehiculo1(RecursoBuilder builder) {
         this.nombre = builder.nombre;
         this.ataque = builder.ataque;
+        this.vida = builder.vida;
     }
 
-    public Vehiculo1() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+
+    @Override
+    public int getVida() {
+        return vida;
     }
+
+    @Override
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    
 @Override
     public String getNombre() {
         return nombre;
@@ -43,13 +53,17 @@ public class Vehiculo1 implements miliciapadre {
    public static class RecursoBuilder{
      private String nombre;
     private int ataque;
-    
+     private int vida;
        public  RecursoBuilder nombre(String nombre){
             this.nombre=nombre;
             return this;
         }
        public  RecursoBuilder ataque(int ataque){
             this.ataque=ataque;
+            return this;
+        }
+       public  RecursoBuilder vida(int vida){
+            this.vida=vida;
             return this;
         }
         

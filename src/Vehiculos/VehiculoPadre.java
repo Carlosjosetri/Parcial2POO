@@ -12,9 +12,11 @@ import Milicias.*;
  * @author UCA
  */
 public interface VehiculoPadre {
-      public void setataque(int ataque);
+   public void setataque(int ataque);
     public String getNombre();
     public void setNombre(String nombre);
     public int getataque();
+  public void setVida(int vida);
+  public int getVida();
  
 }

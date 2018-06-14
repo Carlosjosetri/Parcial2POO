@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vehiculos;
-
-import Milicias.*;
+package Milicias;
 
 
 /**
  *
  * @author CARLOS
  */
-public class Vehiculo2 implements miliciapadre {
+public class MiliciaEspecial implements miliciapadre {
     private String nombre;
     private int ataque;
     private int vida;
-    public Vehiculo2(RecursoBuilder builder) {
+    public MiliciaEspecial(RecursoBuilder builder) {
         this.nombre = builder.nombre;
         this.ataque = builder.ataque;
         this.vida = builder.vida;
@@ -67,8 +65,8 @@ public class Vehiculo2 implements miliciapadre {
             return this;
         }
         
-        public  Vehiculo2 build(){
-            return new Vehiculo2(this);
+        public  MiliciaEspecial build(){
+            return new MiliciaEspecial(this);
         }
     }
  
