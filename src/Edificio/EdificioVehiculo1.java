@@ -5,6 +5,9 @@
  */
 package Edificio;
 
+import Vehiculos.Factoryvehiculos;
+import Vehiculos.VehiculoPadre;
+
 /**
  *
  * @author CARLOS
@@ -133,6 +136,10 @@ public class EdificioVehiculo1 extends Edificio {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+       @Override
+    public VehiculoPadre getVehiculo(String Raza){
+        return Factoryvehiculos.getVehiculo("VEHICULO",Raza);
     }
 
     public static class EdificioBuilder {

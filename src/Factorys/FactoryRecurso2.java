@@ -25,13 +25,13 @@ public class FactoryRecurso2 {
         switch (tipo) {
             case "DRAIOCHT":
                 return new EdificioRecurso2.EdificioBuilder().nombre("Edificio de Recolector de "+prueba).Precio1(400).Precio2(200).Precio3(100)
-                        .vida(2000).Trabajo(1).Construccion(1).disponible("En construccion").disponiblilidad(false).build();
+                        .vida(2000).Trabajo(1).Construccion(1).disponible("En construccion").disponiblilidad(false).codigo("C1U2B3O4").build();
             case "HUMANO":
                return new EdificioRecurso2.EdificioBuilder().nombre("Edificio de Recolector de "+prueba).Precio1(300).Precio2(200).Precio3(100)
-                        .vida(1800).Trabajo(1).Construccion(2).disponible("En construccion").disponiblilidad(false).build();
+                        .vida(1800).Trabajo(1).Construccion(2).disponible("En construccion").disponiblilidad(false).codigo("C1U2B3O4").build();
             case "EPIGEIAN":
                 return new EdificioRecurso2.EdificioBuilder().nombre("Edificio de Recolector de "+prueba).Precio1(500).Precio2(300).Precio3(100)
-                        .vida(5000).Trabajo(2).Construccion(2).disponible("En construccion").disponiblilidad(false).build();
+                        .vida(5000).Trabajo(2).Construccion(2).disponible("En construccion").disponiblilidad(false).codigo("C1U2B3O4").build();
      
             
         }

@@ -12,7 +12,7 @@ import Milicias.*;
  *
  * @author CARLOS
  */
-public class Vehiculo2 implements miliciapadre {
+public class Vehiculo2 implements VehiculoPadre {
     private String nombre;
     private int ataque;
     private int vida;

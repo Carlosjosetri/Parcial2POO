@@ -5,6 +5,9 @@
  */
 package Edificio;
 
+import recursos.Factoryrecursos;
+import recursos.recurso;
+
 /**
  *
  * @author CARLOS
@@ -23,7 +26,7 @@ public class EdificioRecurso1 extends Edificio {
     private String disponible;
    private boolean trabajando;
     private String nombre;
- public String codigo;
+ private String codigo;
     public EdificioRecurso1(EdificioBuilder builder) {
         this.vida = builder.vida;
         this.Precio1 = builder.Precio1;
@@ -37,7 +40,15 @@ public class EdificioRecurso1 extends Edificio {
         this.disponible = builder.disponible;
         this.disponiblilidad = builder.disponiblilidad;
    this.trabajando=false;
-   this.codigo="U1N2";
+   this.codigo=builder.codigo;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public boolean isTrabajando() {
@@ -134,6 +145,10 @@ public class EdificioRecurso1 extends Edificio {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    @Override
+    public recurso getrecursos(String raza){
+        return Factoryrecursos.getRecurso("RECURSO1", raza, 600);
+    }
 
     public static class EdificioBuilder {
 
@@ -149,7 +164,7 @@ public class EdificioRecurso1 extends Edificio {
         private boolean disponiblilidad;
         private String disponible;
         private String nombre;
-
+ private String codigo;
         public EdificioBuilder vida(int vida) {
             this.vida = vida;
             return this;
@@ -192,6 +207,10 @@ public class EdificioRecurso1 extends Edificio {
 
         public EdificioBuilder nombre(String nombre) {
             this.nombre = nombre;
+            return this;
+        }
+        public EdificioBuilder codigo(String codigo) {
+            this.codigo = codigo;
             return this;
         }
 

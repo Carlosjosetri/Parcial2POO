@@ -5,6 +5,9 @@
  */
 package Edificio;
 
+import Milicias.FactoryMiliciaa;
+import Milicias.miliciapadre;
+
 /**
  *
  * @author CARLOS
@@ -133,6 +136,10 @@ public class EdificioMilicia extends Edificio {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+      @Override
+    public miliciapadre CrearMilicia(String Raza){
+        return FactoryMiliciaa.getMilicia("MILICIA",Raza);
     }
 
     public static class EdificioBuilder {

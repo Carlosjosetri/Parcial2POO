@@ -6,7 +6,9 @@
 package parcialpoo2;
 
 import Edificio.Edificio;
+import Milicias.miliciapadre;
 import Razas.Raza;
+import Vehiculos.VehiculoPadre;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +18,8 @@ import java.util.ArrayList;
 public class Player {
     private String Nombre;
     public ArrayList<Edificio> edificios;
+    public ArrayList<miliciapadre> milicias;
+    public ArrayList<VehiculoPadre> vehiculos;
     private Raza raza;
     
 

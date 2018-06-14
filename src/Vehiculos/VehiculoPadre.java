@@ -19,4 +19,5 @@ public interface VehiculoPadre {
   public void setVida(int vida);
   public int getVida();
  
+ 
 }

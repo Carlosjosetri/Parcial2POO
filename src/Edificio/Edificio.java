@@ -5,7 +5,10 @@
  */
 package Edificio;
 
+import Milicias.miliciapadre;
+import Vehiculos.VehiculoPadre;
 import java.util.ArrayList;
+import recursos.Factoryrecursos;
 import recursos.recurso;
 
 /**
@@ -100,6 +103,18 @@ public int getTrabajo() {
 
     public void setTrabajando(boolean trabjando) {
      
+    }
+    public miliciapadre CrearMilicia(String Raza){
+        return null;
+    }
+     public String getCodigo() {
+        return "";
+    }
+     public VehiculoPadre getVehiculo(String Raza){
+         return null;
+     }
+     public recurso getrecursos(String raza){
+        return null;
     }
 }
     

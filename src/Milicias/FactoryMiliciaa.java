@@ -19,7 +19,7 @@ public class FactoryMiliciaa {
                     case "MILICIA":
                         return new Milicia.RecursoBuilder().nombre("Mago rojo").vida(700).ataque(700).build() ;
                     case "MILICIAESPECIAL":
-                        return new MiliciaEspecial.RecursoBuilder().nombre("Gandalf").vida(2000).ataque(1000).build() ;
+                        return new Miliciaespecial.RecursoBuilder().nombre("Gandalf").vida(2000).ataque(1000).build() ;
                
                 }
             case "HUMANO":
@@ -27,7 +27,7 @@ public class FactoryMiliciaa {
                     case "MILICIA":
                         return new Milicia.RecursoBuilder().nombre("Ejercito URSS").vida(2000).ataque(400).build() ;
                     case "MILICIAESPECIAL":
-                        return new MiliciaEspecial.RecursoBuilder().nombre("Putin").vida(3000).ataque(1200).build() ;
+                        return new Miliciaespecial.RecursoBuilder().nombre("Putin").vida(3000).ataque(1200).build() ;
            
                 }
             case "EPIGEIAN":
@@ -35,7 +35,7 @@ public class FactoryMiliciaa {
                     case "MILICIA":
                         return new Milicia.RecursoBuilder().nombre("Monolitos").vida(3000).ataque(200).build() ;
                     case "MILICIAESPECIAL":
-                        return new MiliciaEspecial.RecursoBuilder().nombre("Golem").vida(9000).ataque(500).build() ;
+                        return new Miliciaespecial.RecursoBuilder().nombre("Golem").vida(9000).ataque(500).build() ;
             
                 }
      
