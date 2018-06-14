@@ -19,6 +19,8 @@ public class Edificio {
      public ArrayList<recurso> recurso1;
     public ArrayList<recurso>   recurso2;
     public ArrayList<recurso>  recurso3;
+        public ArrayList<miliciapadre> miliciasa;
+    public ArrayList<VehiculoPadre> vehiculosa;
      public String codigo;
 public int getVida(){
       return 1;

@@ -10,14 +10,14 @@ package Milicias;
  *
  * @author CARLOS
  */
-public class Milicia implements miliciapadre {
+public class MiliciaEspecial implements miliciapadre {
 
     private String nombre;
     private int ataque;
     private int vida;
     public boolean entrenado;
 
-    public Milicia(RecursoBuilder builder) {
+    public MiliciaEspecial(RecursoBuilder builder) {
         this.nombre = builder.nombre;
         this.ataque = builder.ataque;
         this.vida = builder.vida;
@@ -83,8 +83,8 @@ public class Milicia implements miliciapadre {
             return this;
         }
 
-        public Milicia build() {
-            return new Milicia(this);
+        public MiliciaEspecial build() {
+            return new MiliciaEspecial(this);
         }
     }
 

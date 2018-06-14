@@ -6,6 +6,8 @@
 package Edificio;
 
 
+import Milicias.miliciapadre;
+import Vehiculos.VehiculoPadre;
 import java.util.ArrayList;
 import recursos.recurso;
 
@@ -20,12 +22,16 @@ public class CentrodeMando extends  Edificio {
     public ArrayList<recurso>  recurso3;
     int nivel;
     private String nombre;
+    public ArrayList<miliciapadre> miliciasa;
+    public ArrayList<VehiculoPadre> vehiculosa;
   public CentrodeMando(EdificioBuilder builder ) {
         this.vida=builder.vida;
         this.nombre=builder.nombre;
         recurso1=new ArrayList<>();
         recurso2=new ArrayList<>();
         recurso3=new ArrayList<>();
+        miliciasa=new ArrayList<>();
+        vehiculosa=new ArrayList<>();
         this.nivel=builder.nivel;
     }
     

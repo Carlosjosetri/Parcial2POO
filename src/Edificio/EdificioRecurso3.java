@@ -5,6 +5,9 @@
  */
 package Edificio;
 
+import Milicias.miliciapadre;
+import Vehiculos.VehiculoPadre;
+import java.util.ArrayList;
 import recursos.Factoryrecursos;
 import recursos.recurso;
 
@@ -27,6 +30,8 @@ public class EdificioRecurso3 extends Edificio {
    private boolean trabajando;
     private String nombre;
  private String codigo;
+     public ArrayList<miliciapadre> miliciasa;
+    public ArrayList<VehiculoPadre> vehiculosa;
     public EdificioRecurso3(EdificioBuilder builder) {
         this.vida = builder.vida;
         this.Precio1 = builder.Precio1;
@@ -41,6 +46,8 @@ public class EdificioRecurso3 extends Edificio {
         this.disponiblilidad = builder.disponiblilidad;
    this.trabajando=false;
    this.codigo=builder.codigo;
+      miliciasa=new ArrayList<>();
+        vehiculosa=new ArrayList<>();
     }
 
     public String getCodigo() {

@@ -84,12 +84,12 @@ public class Menu {
             System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\");
             System.out.println("Turno de jugador " + (n + 1));
             System.out.println("");
-            menufasefuc(fase.players.get(n));
+            menufasefuc(fase.players.get(n),fase.players.get(y));
             usaredificio(fase.players.get(n));
             System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\");
             System.out.println("Turno de jugador " + (y + 1));
             System.out.println("");
-            menufasefuc(fase.players.get(y));
+            menufasefuc(fase.players.get(y),fase.players.get(n));
             fase.numfase++;
             incremento(fase);
             Trabajocont(fase);
@@ -136,7 +136,7 @@ public class Menu {
 
     }
 
-    public void menufasefuc(Player player) {
+    public void menufasefuc(Player player,Player player2) {
         int opcion = 5;
         boolean flag = true;
         Scanner leer = new Scanner(System.in);
@@ -160,9 +160,12 @@ public class Menu {
                         edificiosDisponibles(player);
                         break;
                     case 3:
-                        edificiosDisponibles(player);
+                        usaredificio(player);
                         break;
                     case 4:
+                        edificiosDisponibles(player);
+                        break;
+                    case 5:
                         flag = false;
                         System.out.println("");
                         break;
@@ -176,6 +179,42 @@ public class Menu {
             }
         }
 
+    }
+    public void atacar (Player player,Player player2){
+        if(player.milicias.size()>=1){
+            System.out.println("Tus milicias disponibles son ");
+                for (int i = 0; i < player.milicias.size(); i++) {
+            System.out.println((i+1) + "--" + player.milicias.get(i).getNombre() + "" + player.getRaza().Nombre);}
+                 System.out.println("@@@ ELIJA EL NUMERO DE MILICIA A USAR");
+        int opcion;
+        boolean flag = true;
+        Scanner leer = new Scanner(System.in);
+        while (flag == true) {
+
+            try {
+
+                opcion = leer.nextInt();
+                if (opcion-1 <= player.edificios.size()) {
+                    if(opcion!=0){
+                         menudeuso(player, opcion);
+                    flag = false;
+                    }else {
+                    System.err.println("Opción inválida. Intente de nuevo. ");
+                }
+                   
+                } else {
+                    System.err.println("Opción inválida. Intente de nuevo. ");
+                }
+
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer.nextLine();
+            }
+        }
+        System.out.println("");
+        }else{
+            System.out.println("No tienes tropas par atacar");
+        }
     }
 
     public void menuConstrucion(Player player) {
@@ -725,6 +764,23 @@ public class Menu {
 
         }
     }
+    public void Trabajo(Fase fase) {
+        for (int i = 0; i < fase.players.size(); i++) {
+            for (int j = 1; j < fase.players.get(i).edificios.size(); j++) {
+               
+                if (fase.players.get(i).edificios.get(j).isDisponiblilidad()) {
+                    if (fase.players.get(i).edificios.get(j).isTrabajando()) {
+
+                    } else {
+                        fase.players.get(i).edificios.get(j).
+                                setAcumt(fase.players.get(i).edificios.get(j).getAcumt() + 1);
+                    }
+                }
+
+            }
+
+        }
+    }
 
     public void incremento(Fase fase) {
         for (int i = 0; i < fase.players.size(); i++) {
@@ -759,7 +815,9 @@ public class Menu {
         System.out.println("1. Construir Edificios.");
         System.out.println("2. Ver Edificios disponibles ");
         System.out.println("3. Usar Edificios");
-        System.out.println("4. Pasar de turno.");
+        System.out.println("4. Atacar");
+        
+        System.out.println("5. Pasar de turno.");
 
     }
 

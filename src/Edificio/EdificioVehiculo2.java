@@ -5,8 +5,10 @@
  */
 package Edificio;
 
+import Milicias.miliciapadre;
 import Vehiculos.Factoryvehiculos;
 import Vehiculos.VehiculoPadre;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,6 +29,8 @@ public class EdificioVehiculo2 extends Edificio {
    private boolean trabajando;
     private String nombre;
  public String codigo;
+     public ArrayList<miliciapadre> miliciasa;
+    public ArrayList<VehiculoPadre> vehiculosa;
     public EdificioVehiculo2(EdificioBuilder builder) {
         this.vida = builder.vida;
         this.Precio1 = builder.Precio1;
@@ -41,6 +45,8 @@ public class EdificioVehiculo2 extends Edificio {
         this.disponiblilidad = builder.disponiblilidad;
    this.trabajando=false;
    this.codigo="https://thecubicle.us/";
+      miliciasa=new ArrayList<>();
+        vehiculosa=new ArrayList<>();
     }
 
     public boolean isTrabajando() {
