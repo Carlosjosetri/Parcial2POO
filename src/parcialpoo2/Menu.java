@@ -180,11 +180,47 @@ public class Menu {
         }
 
     }
-    public void atacar (Player player,Player player2){
-        if(player.milicias.size()>=1){
+    public void atacarcon(Player player,Player player2){
+        int opcion;
+        boolean flag = true;
+        Scanner leer = new Scanner(System.in);
+        while (flag == true) {
+            System.out.println("Con que quieres atacar?");
+            System.out.println("1-Milicias");
+            System.out.println("2-Vehiculos");
+            try {
+                System.out.print("\tElección: ");
+                System.out.println("");
+                opcion = leer.nextInt();
+                switch (opcion) {
+                    case 1:
+                       
+                       
+                       
+                    atacarconmilicia ( player, player2);
+                        flag = false;
+                        break;
+                    case 2:
+                         atacarconVehiculos ( player, player2);
+                        flag = false;
+                        break;
+
+                    default:
+                        System.err.println("Opción inválida. Intente de nuevo. ");
+
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer.nextLine();
+            }
+        }
+
+    }
+    public void atacarconVehiculos (Player player,Player player2){
+        if(player.vehiculos.size()>=1){
             System.out.println("Tus milicias disponibles son ");
-                for (int i = 0; i < player.milicias.size(); i++) {
-            System.out.println((i+1) + "--" + player.milicias.get(i).getNombre() + "" + player.getRaza().Nombre);}
+                for (int i = 0; i < player.vehiculos.size(); i++) {
+            System.out.println((i+1) + "--" + player.vehiculos.get(i).getNombre() + "" + player.getRaza().Nombre);}
                  System.out.println("@@@ ELIJA EL NUMERO DE MILICIA A USAR");
         int opcion;
         boolean flag = true;
@@ -194,9 +230,9 @@ public class Menu {
             try {
 
                 opcion = leer.nextInt();
-                if (opcion-1 <= player.edificios.size()) {
+                if (opcion-1 <= player.vehiculos.size()) {
                     if(opcion!=0){
-                         menudeuso(player, opcion);
+                         menudeataquev(player, opcion, player2);
                     flag = false;
                     }else {
                     System.err.println("Opción inválida. Intente de nuevo. ");
@@ -215,6 +251,108 @@ public class Menu {
         }else{
             System.out.println("No tienes tropas par atacar");
         }
+    }
+     public void menudeataquev(Player player, int mili,Player player2) {
+             System.out.println("@@@ ELIJA EL NUMERO DEL EDIFICIO A ATACAR");
+               for (int i = 0; i < player2.edificios.size(); i++) {
+            System.out.println((i+1) + "--" + player2.edificios.get(i).getNombre() + "" + player2.getRaza().Nombre
+                    + " Estado: " + player2.edificios.get(i).getDisponible());
+
+        }
+        System.out.println("");
+                int opcion2;
+        boolean flag2 = true;
+        Scanner leer2 = new Scanner(System.in);
+        while (flag2 == true) {
+
+            try {
+
+                opcion2 = leer2.nextInt();
+                if (opcion2-1 <= player.vehiculos.size()) {
+                    
+                        player2.edificios.get(opcion2).vehiculosa.add(player.vehiculos.get(mili));
+                    flag2 = false;
+                 
+                   
+                } else {
+                    System.err.println("Opción inválida. Intente de nuevo. ");
+                }
+
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer2.nextLine();
+            }
+        }
+       
+    }
+    public void atacarconmilicia (Player player,Player player2){
+        if(player.milicias.size()>=1){
+            System.out.println("Tus milicias disponibles son ");
+                for (int i = 0; i < player.milicias.size(); i++) {
+            System.out.println((i+1) + "--" + player.milicias.get(i).getNombre() + "" + player.getRaza().Nombre);}
+                 System.out.println("@@@ ELIJA EL NUMERO DE MILICIA A USAR");
+        int opcion;
+        boolean flag = true;
+        Scanner leer = new Scanner(System.in);
+        while (flag == true) {
+
+            try {
+
+                opcion = leer.nextInt();
+                if (opcion-1 <= player.milicias.size()) {
+                    if(opcion!=0){
+                         menudeataque(player, opcion, player2);
+                    flag = false;
+                    }else {
+                    System.err.println("Opción inválida. Intente de nuevo. ");
+                }
+                   
+                } else {
+                    System.err.println("Opción inválida. Intente de nuevo. ");
+                }
+
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer.nextLine();
+            }
+        }
+        System.out.println("");
+        }else{
+            System.out.println("No tienes tropas par atacar");
+        }
+    }
+     public void menudeataque(Player player, int mili,Player player2) {
+             System.out.println("@@@ ELIJA EL NUMERO DEL EDIFICIO A ATACAR");
+               for (int i = 0; i < player2.edificios.size(); i++) {
+            System.out.println((i+1) + "--" + player2.edificios.get(i).getNombre() + "" + player2.getRaza().Nombre
+                    + " Estado: " + player2.edificios.get(i).getDisponible());
+
+        }
+        System.out.println("");
+                int opcion2;
+        boolean flag2 = true;
+        Scanner leer2 = new Scanner(System.in);
+        while (flag2 == true) {
+
+            try {
+
+                opcion2 = leer2.nextInt();
+                if (opcion2-1 <= player.milicias.size()) {
+                    
+                        player2.edificios.get(opcion2).miliciasa.add(player.milicias.get(mili));
+                    flag2 = false;
+                 
+                   
+                } else {
+                    System.err.println("Opción inválida. Intente de nuevo. ");
+                }
+
+            } catch (InputMismatchException e) {
+                System.err.println("Por favor, ingrese un número.");
+                leer2.nextLine();
+            }
+        }
+       
     }
 
     public void menuConstrucion(Player player) {
