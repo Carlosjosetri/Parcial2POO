@@ -104,28 +104,36 @@ public class Menu {
              fase.players.get(i).edificios.get(0).recurso1.get(0)
                      .setCantidad(fase.players.get(i).edificios.get(0).recurso1.get(0).getCantidad()+500);
              fase.players.get(i).edificios.get(0).recurso2.get(0)
-                     .setCantidad(fase.players.get(i).edificios.get(0).recurso1.get(0).getCantidad()+300);
+                     .setCantidad(fase.players.get(i).edificios.get(0).recurso2.get(0).getCantidad()+300);
              fase.players.get(i).edificios.get(0).recurso3.get(0)
-                     .setCantidad(fase.players.get(i).edificios.get(0).recurso1.get(0).getCantidad()+100);
+                     .setCantidad(fase.players.get(i).edificios.get(0).recurso3.get(0).getCantidad()+100);
          }
     }
 
     public void verificarataque(Fase fase) {
-        for (int i = 0; i < fase.players.size(); i++) {
+        for (int i = 0; i < fase.players.size(); i++) { 
             for (int j = 0; j < fase.players.get(i).edificios.size(); j++) {
-                if (fase.players.get(i).edificios.get(j).miliciasa != null || fase.players.get(i).edificios.get(j).vehiculosa != null) {
+                if (fase.players.get(i).edificios.get(j).vehiculosa == null) {
+                        fase.players.get(i).edificios.get(j).vehiculosa = new ArrayList<>();
+                    }
+                if (fase.players.get(i).edificios.get(j).miliciasa == null) {
+                        fase.players.get(i).edificios.get(j).miliciasa = new ArrayList<>();
+                    }
+                System.out.println(fase.players.get(i).edificios.get(j).miliciasa.size());
+               
                     if (fase.players.get(i).edificios.get(j).miliciasa.size() > 0
                             || fase.players.get(i).edificios.get(j).vehiculosa.size() > 0) {
-                        for (int h = 0; h < fase.players.get(i).edificios.get(j).miliciasa.size(); h++) {
+                    
+                        for (int h = 0; h <fase.players.get(i).edificios.get(j).miliciasa.size(); h++) {
                             fase.players.get(i).edificios.get(j).setVida(fase.players.get(i).edificios.get(j).getVida()
                                     - fase.players.get(i).edificios.get(j).miliciasa.get(h).getataque());
                         }
-                        for (int h = 0; h <= fase.players.get(i).edificios.get(j).vehiculosa.size(); h++) {
+                        for (int h = 0; h < fase.players.get(i).edificios.get(j).vehiculosa.size(); h++) {
                             fase.players.get(i).edificios.get(j).setVida(fase.players.get(i).edificios.get(j).getVida()
                                     - fase.players.get(i).edificios.get(j).vehiculosa.get(h).getataque());
                         }
                     }
-                }
+                
             }
 
         }
@@ -253,6 +261,9 @@ public class Menu {
     public void atacarconVehiculos(Player player, Player player2) {
         if (player.vehiculos.size() >= 1) {
             System.out.println("Tus milicias disponibles son ");
+              if(player.vehiculos==null){
+                player.vehiculos=new ArrayList<>();
+            }
             for (int i = 0; i < player.vehiculos.size(); i++) {
                 System.out.println((i + 1) + "--" + player.vehiculos.get(i).getNombre() + "" + player.getRaza().Nombre);
             }
@@ -326,6 +337,9 @@ public class Menu {
     public void atacarconmilicia(Player player, Player player2) {
         if (player.milicias.size() >= 1) {
             System.out.println("Tus milicias disponibles son ");
+            if(player.milicias==null){
+                player.milicias=new ArrayList<>();
+            }
             for (int i = 0; i < player.milicias.size(); i++) {
                 System.out.println((i + 1) + "--" + player.milicias.get(i).getNombre() + "" + player.getRaza().Nombre);
             }
@@ -968,9 +982,9 @@ public class Menu {
 
     public void incremento(Fase fase) {
         for (int i = 0; i < fase.players.size(); i++) {
-
-            for (int j = 1; j < fase.players.get(i).edificios.size() - 1; j++) {
-
+            System.out.println("wwfwe");
+            for (int j = 1; j <fase.players.get(i).edificios.size() ; j++) {
+                System.out.println(fase.players.get(i).edificios.get(j).getAcumc());
                 if (fase.players.get(i).edificios.get(j).getAcumc() == fase.players.get(i).edificios.get(j).getConstruccion()) {
 
                     fase.players.get(i).edificios.get(j).setDisponiblilidad(true);

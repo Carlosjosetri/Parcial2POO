@@ -35,10 +35,12 @@ public class CentrodeMando extends  Edificio {
         this.nivel=builder.nivel;
     }
     
+    @Override
     public int getVida() {
         return vida;
     }
 
+    @Override
     public void setVida(int vida) {
         this.vida = vida;
     }
