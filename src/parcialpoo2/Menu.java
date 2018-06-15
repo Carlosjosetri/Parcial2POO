@@ -575,6 +575,7 @@ public class Menu {
                         flag = false;
                         }else{
                             System.out.println("El Edificio sigue en construccion");
+                               flag = false;
                         }
                         
                     } else {
