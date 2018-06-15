@@ -570,8 +570,13 @@ public class Menu {
                 opcion = leer.nextInt();
                 if (opcion <= player.edificios.size() - 1) {
                     if (opcion != 0) {
-                        menudeuso(player, opcion);
+                        if(player.edificios.get(opcion).isDisponiblilidad()){
+                             menudeuso(player, opcion);
                         flag = false;
+                        }else{
+                            System.out.println("El Edificio sigue en construccion");
+                        }
+                        
                     } else {
                         System.err.println("Opción inválida. Intente de nuevo. ");
                     }
