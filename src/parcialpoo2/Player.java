@@ -26,6 +26,8 @@ public class Player {
     
 public Player() {
     edificios = new ArrayList<>();
+    milicias = new ArrayList<>();
+   vehiculos = new ArrayList<>();
     }
 
     

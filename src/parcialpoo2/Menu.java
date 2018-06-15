@@ -7,6 +7,7 @@ package parcialpoo2;
 
 import Edificio.Edificio;
 import Edificio.EdificioFactory;
+import Milicias.miliciapadre;
 import Razas.Raza;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -85,7 +86,7 @@ public class Menu {
             System.out.println("Turno de jugador " + (n + 1));
             System.out.println("");
             menufasefuc(fase.players.get(n), fase.players.get(y));
-           
+
             System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\");
             System.out.println("Turno de jugador " + (y + 1));
             System.out.println("");
@@ -94,26 +95,37 @@ public class Menu {
             incremento(fase);
             Trabajocont(fase);
             verificarataque(fase);
+            aumntarrecursos(fase);
         }
 
+    }
+    public void aumntarrecursos(Fase fase){
+         for (int i = 0; i < fase.players.size(); i++) {
+             fase.players.get(i).edificios.get(0).recurso1.get(0)
+                     .setCantidad(fase.players.get(i).edificios.get(0).recurso1.get(0).getCantidad()+500);
+             fase.players.get(i).edificios.get(0).recurso2.get(0)
+                     .setCantidad(fase.players.get(i).edificios.get(0).recurso1.get(0).getCantidad()+300);
+             fase.players.get(i).edificios.get(0).recurso3.get(0)
+                     .setCantidad(fase.players.get(i).edificios.get(0).recurso1.get(0).getCantidad()+100);
+         }
     }
 
     public void verificarataque(Fase fase) {
         for (int i = 0; i < fase.players.size(); i++) {
-            for (int j = 0; j <= fase.players.get(i).edificios.size(); j++) {
-
-                if (fase.players.get(i).edificios.get(j).miliciasa.size() > 0
-                        || fase.players.get(i).edificios.get(j).vehiculosa.size() > 0) {
-                    for (int h = 0; h <= fase.players.get(i).edificios.get(j).miliciasa.size(); h++) {
-                        fase.players.get(i).edificios.get(j).setVida(fase.players.get(i).edificios.get(j).getVida()
-                                - fase.players.get(i).edificios.get(j).miliciasa.get(h).getataque());
-                    }
-                    for (int h = 0; h <= fase.players.get(i).edificios.get(j).vehiculosa.size(); h++) {
-                        fase.players.get(i).edificios.get(j).setVida(fase.players.get(i).edificios.get(j).getVida()
-                                - fase.players.get(i).edificios.get(j).vehiculosa.get(h).getataque());
+            for (int j = 0; j < fase.players.get(i).edificios.size(); j++) {
+                if (fase.players.get(i).edificios.get(j).miliciasa != null || fase.players.get(i).edificios.get(j).vehiculosa != null) {
+                    if (fase.players.get(i).edificios.get(j).miliciasa.size() > 0
+                            || fase.players.get(i).edificios.get(j).vehiculosa.size() > 0) {
+                        for (int h = 0; h < fase.players.get(i).edificios.get(j).miliciasa.size(); h++) {
+                            fase.players.get(i).edificios.get(j).setVida(fase.players.get(i).edificios.get(j).getVida()
+                                    - fase.players.get(i).edificios.get(j).miliciasa.get(h).getataque());
+                        }
+                        for (int h = 0; h <= fase.players.get(i).edificios.get(j).vehiculosa.size(); h++) {
+                            fase.players.get(i).edificios.get(j).setVida(fase.players.get(i).edificios.get(j).getVida()
+                                    - fase.players.get(i).edificios.get(j).vehiculosa.get(h).getataque());
+                        }
                     }
                 }
-
             }
 
         }
@@ -185,7 +197,7 @@ public class Menu {
                         usaredificio(player);
                         break;
                     case 4:
-                        edificiosDisponibles(player);
+                        atacarcon(player, player2);
                         break;
                     case 5:
                         flag = false;
@@ -255,7 +267,7 @@ public class Menu {
                     opcion = leer.nextInt();
                     if (opcion - 1 <= player.vehiculos.size()) {
                         if (opcion != 0) {
-                            menudeataquev(player, opcion, player2);
+                            menudeataquev(player, opcion - 1, player2);
                             flag = false;
                         } else {
                             System.err.println("Opción inválida. Intente de nuevo. ");
@@ -293,8 +305,10 @@ public class Menu {
 
                 opcion2 = leer2.nextInt();
                 if (opcion2 - 1 <= player.vehiculos.size()) {
-
-                    player2.edificios.get(opcion2).vehiculosa.add(player.vehiculos.get(mili));
+                    if (player2.edificios.get(opcion2 - 1).vehiculosa == null) {
+                        player2.edificios.get(opcion2 - 1).vehiculosa = new ArrayList<>();
+                    }
+                    player2.edificios.get(opcion2 - 1).vehiculosa.add(player.vehiculos.get(mili));
                     flag2 = false;
 
                 } else {
@@ -326,7 +340,7 @@ public class Menu {
                     opcion = leer.nextInt();
                     if (opcion - 1 <= player.milicias.size()) {
                         if (opcion != 0) {
-                            menudeataque(player, opcion, player2);
+                            menudeataque(player, opcion - 1, player2);
                             flag = false;
                         } else {
                             System.err.println("Opción inválida. Intente de nuevo. ");
@@ -351,7 +365,7 @@ public class Menu {
         System.out.println("@@@ ELIJA EL NUMERO DEL EDIFICIO A ATACAR");
         for (int i = 0; i < player2.edificios.size(); i++) {
             System.out.println((i + 1) + "--" + player2.edificios.get(i).getNombre() + "" + player2.getRaza().Nombre
-                    + " Estado: " + player2.edificios.get(i).getDisponible());
+                    + " Vida " + player2.edificios.get(i).getVida());
 
         }
         System.out.println("");
@@ -364,8 +378,11 @@ public class Menu {
 
                 opcion2 = leer2.nextInt();
                 if (opcion2 - 1 <= player.milicias.size()) {
+                    if (player2.edificios.get(opcion2 - 1).miliciasa == null) {
+                        player2.edificios.get(opcion2 - 1).miliciasa = new ArrayList<>();
+                    }
 
-                    player2.edificios.get(opcion2).miliciasa.add(player.milicias.get(mili));
+                    player2.edificios.get(opcion2 - 1).miliciasa.add(player.milicias.get(mili));
                     flag2 = false;
 
                 } else {
@@ -584,7 +601,8 @@ public class Menu {
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
-                        if (player.edificios.get(edificioindex).getCodigo() == null) {
+
+                        if (player.edificios.get(edificioindex).codigo == null) {
                             eleccion(player, edificioindex);
                         } else {
                             eleccioncod(player, edificioindex);
@@ -611,10 +629,11 @@ public class Menu {
     public void eleccion(Player player, int edi) {
         switch (player.edificios.get(edi).getNombre()) {
             case "Edificio de Entrenamiento ":
-                System.out.println("holii2i");
+                System.out.println("holii");
                 break;
 
             case "Edificio de Milicia ":
+
                 menucreamilicia(player, edi);
                 break;
 
@@ -623,11 +642,11 @@ public class Menu {
                 break;
 
             case "Edificio de Creacion de Vehiculos ":
-                System.out.println("holii3i");
+                menucrearvehiculo(player, edi);
                 break;
 
             case "Edificio de Creacion de Vehiculos2 ":
-                System.out.println("holii4i");
+                menucrearvehiculo(player, edi);
                 break;
 
         }
@@ -723,7 +742,7 @@ public class Menu {
         boolean flag = true;
         Scanner leer = new Scanner(System.in);
         while (flag == true) {
-            if ("M1E2".equals(player.edificios.get(edificioindex).codigo)) {
+            if ("Edificio de Milicia ".equals(player.edificios.get(edificioindex).getNombre())) {
                 System.out.println("1-Crear Milicia");
                 System.out.println("2-Salir");
             } else {
@@ -737,6 +756,7 @@ public class Menu {
                 opcion = leer.nextInt();
                 switch (opcion) {
                     case 1:
+
                         player.milicias.add(player.edificios.get(edificioindex).CrearMilicia(player.getRaza().Nombre));
                         flag = false;
                         break;
@@ -761,7 +781,7 @@ public class Menu {
         boolean flag = true;
         Scanner leer = new Scanner(System.in);
         while (flag == true) {
-            if ("M1E2".equals(player.edificios.get(edificioindex).codigo)) {
+            if ("Edificio de Creacion de Vehiculos ".equals(player.edificios.get(edificioindex).getNombre())) {
                 System.out.println("1-Crear Milicia");
                 System.out.println("2-Salir");
             } else {
